@@ -20,6 +20,14 @@ session = DBSession()
 #flask has already created. If either of '/' or '/' gets sent from
 #the browser, this function gets executed
 @app.route('/')
+def landing_page():
+	return render_template('cover.html')
+
+@app.route('/login')
+def login():
+	return render_template('signin.html')
+
+@app.route('/display_restaurants/')
 def showRestaurants():
 	restaurants = session.query(Restaurant).all()
 	return render_template('index.html', restaurants = restaurants)
