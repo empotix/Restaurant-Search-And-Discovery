@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Restaurant, MenuItem, Reviews
+from database_setup.database_setup import Base, Restaurant, MenuItem, Reviews
 
 #Creating an instance of the flask application
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, make_response

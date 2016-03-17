@@ -11,24 +11,25 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
-#Lets SQL Alchemy know that our classes are special SQL alchemy classes 
+#Lets SQL Alchemy know that our classes are special SQL alchemy classes
 #that correspond to table in the database
-Base = declarative_base() 
+Base = declarative_base()
 
 class Restaurant(Base):
-    
+
     #Table information
     __tablename__ = 'restaurant'
-    
+
     #Mapper information
     name = Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
+    cuisine = Column(String(80), nullable = True)
 
 class MenuItem(Base):
-    
+
     #Table information
     __tablename__ = 'menu_item'
-    
+
     #Mapper information
     name = Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
@@ -37,7 +38,7 @@ class MenuItem(Base):
     price = Column(String(8))
     restaurant_id = Column(Integer, ForeignKey('restaurant.id'))
     restaurant = relationship(Restaurant)
-    
+
     #Returns object data in serializable format
     @property
     def serialize(self):
